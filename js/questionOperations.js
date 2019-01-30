@@ -3,8 +3,8 @@ const questionOperations = {
     add(questionObject){
         this.questions.push(questionObject);
     },
-    delete(){
-
+    delete(id){
+        delete this.mark(id);
     },
     search(){
 
@@ -18,5 +18,11 @@ const questionOperations = {
     },
     countUnMark(){
         return this.questions.length - this.countMark();
-    }
+    },
+    load(){
+
+    },
+    sort(){
+
+    },
 }

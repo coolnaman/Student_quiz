@@ -1,10 +1,24 @@
-window.addEventListener("load",bindEvent);
+window.addEventListener("load",init);
 function init(){
     bindEvent();
     updateCount();
 }
+window.addEventListener("online",()=>{
+    alert("U r online");
+})
+window.addEventListener("offline",()=>{
+    alert("U r offline");
+})
+
+
+
+function deleteRecord(){
+    questionOperations.delete();
+}
+
 function bindEvent(){
     document.querySelector("#add").addEventListener("click",addQuestion);
+    document.querySelector("#del").addEventListener("click",deleteRecord);
 }
 function addQuestion(){
     var questionObject = new Question();
@@ -30,6 +44,7 @@ function trash(){
     var tr =  this.parentNode.parentNode;
     console.log("tr",tr);
     tr.classList.toggle("alert-danger");
+
     updateCount();
 }
 function edit(){
@@ -47,7 +62,7 @@ function printQuestion(questionObject){
     var tr = tbody.insertRow();
     var index = 0;
     for(let key in questionObject){
-        tr.insertCell(index).innerText = questionObject[key];
+        tr.insertCell(index).innerText = questionObject[key]; 
         index++;
     }
     var td = tr.insertCell(index);
